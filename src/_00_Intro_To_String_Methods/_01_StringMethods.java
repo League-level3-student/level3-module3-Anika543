@@ -101,6 +101,7 @@ public class _01_StringMethods {
 
 	// Call Utilities.encrypt at the bottom of this file to encrypt String s
 	public static String encrypt(String s, char key) {
+		//Utilities.encrypt(s.getBytes(), key.);
 		return null;
 	}
 
@@ -113,21 +114,55 @@ public class _01_StringMethods {
 	// Return the number of words in String s that end with String substring
 	// You can assume there are no punctuation marks between words
 	public static int wordsEndsWithSubstring(String s, String substring) {
-		return 0;
+		String[] words = s.split(" "); 
+		int val = 0; 
+		int x = 0; 
+		
+		for(int i =0; i<words.length; i++) {
+			x = words[i].length()-substring.length();
+			if(x<0) {
+				x = 0; 
+			}
+			
+			if(words[i].substring(x, words[i].length()).contains(substring)){
+				val++ ;
+			}
+		}
+		return val;
 	}
 
 	// Given String s, return the number of characters between the first
 	// occurrence of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
-		return 0;
+		int index=s.indexOf(substring, 0); 
+		
+		int y = (s.length()-substring.length()) - index+substring.length(); 
+		return y;
 	}
 
 	// Return true if String s is a palindrome
 	// palindromes are words or phrases are read the same forward as backward.
 	// HINT: ignore/remove all punctuation and spaces in the String
 	public static boolean palindrome(String s) {
-		return true;
+		s = s.replace(" ", "");
+		s = s.replace(".", "");
+		
+		boolean b = true; 
+		
+		for(int i = 0; i<s.length(); i++){
+			String x = s.charAt(i) + "";
+			String y = s.charAt(s.length()-i-1) + "";
+					
+			if(x.equalsIgnoreCase(y)) {
+				
+			}else {
+				b = false; 
+				break; 
+			}
+		}
+		
+		return b;
 	}
 }
 
